@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+# I WANT DEBUGGER, RRRRAWRRRRARGH!
+gem 'debugger'
+# I want authentification
+gem 'devise'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.3'
 
