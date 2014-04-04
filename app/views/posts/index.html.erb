@@ -1,0 +1,43 @@
+<h1>I fucking hate this already!</h1>
+<h2> Also known as test blog in rails...<h2>
+<% if user_signed_in? %>
+    <span>Hello, <%= current_user.email %></span>
+    <%= link_to 'Exit', destroy_user_session_path, :method => :delete %>
+<% else %>
+    <%= link_to 'Sign in', new_user_session_path %> or <%= link_to 'Sign up', new_user_registration_path %>
+<% end %>
+
+<br><hr>
+<% if current_admin.try(:email) %>
+ <%= link_to 'Add a post', new_post_path %>
+<%= link_to  "sign out as admin", destroy_admin_session_path, method: :delete %>
+<% else %>
+<%= link_to  "sign in as admin",  new_admin_session_path%>
+<% end %>
+<br><hr>
+
+<% if @posts.blank? %>
+<p>There are not any posts currently in the system.</p>
+<% else %>
+<% @posts.each do |post| %>
+<table border="2" width="50%">
+  <tr>
+    <td><%= post.title %></td> <td><%= post.date %> </td> <td><%= link_to 'View', post_path(post) %></td> <td><%= link_to 'Edit', edit_post_path(post)%></td>
+    <td><%= link_to "Delete", post_path(post), :method => :delete, :confirm => "Are you sure you want to delete this item?" %></td> 
+  </tr>
+ 
+  <tr>
+   
+
+  <tr>
+    <td colspan="5"><%= post.content %></td>
+  </tr>
+  <tr>
+    <td>Mood: <%= post.mood %> </td> <td>Comments:  </td> 
+  </tr>
+<% end %>
+</table>
+<input type="button" value="Button" onClick="javascript: window.alert('What did you expect? A miracle?');">
+<% end %> 
+<br>
+<p>Find me in app/views/welcome/index.html.erb</p>
